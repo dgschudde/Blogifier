@@ -8,6 +8,9 @@
     <ClientAssetsDirectory>assets\</ClientAssetsDirectory>
     <ClientAssetsRestoreCommand>npm i</ClientAssetsRestoreCommand>
     <ClientAssetsBuildCommand>npm run build:$(Configuration)</ClientAssetsBuildCommand>
+    <!-- CompressionEnabled set to false, this is a workarround to resolve
+     issue: https://github.com/dotnet/aspnetcore/issues/59291 -->
+    <CompressionEnabled>false</CompressionEnabled>
   </PropertyGroup>
 
   <ItemGroup>

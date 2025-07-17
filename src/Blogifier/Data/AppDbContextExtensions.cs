@@ -31,6 +31,8 @@ public static class AppDbContextExtensions
       services.AddDbContext<AppDbContext, SqliteDbContext>(o =>
       {
         o.UseSqlite(sonnectionStringBuilder.ToString());
+        o.ConfigureWarnings(w =>
+          w.Ignore(RelationalEventId.NonTransactionalMigrationOperationWarning));
         o.ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning));
       });
     }
@@ -39,6 +41,8 @@ public static class AppDbContextExtensions
       services.AddDbContext<AppDbContext, SqlServerDbContext>(o =>
       {
         o.UseSqlServer(connectionString);
+        o.ConfigureWarnings(w =>
+          w.Ignore(RelationalEventId.NonTransactionalMigrationOperationWarning));
         o.ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning));
 
       });
@@ -49,6 +53,8 @@ public static class AppDbContextExtensions
       services.AddDbContext<AppDbContext, MySqlDbContext>(o =>
       {
         o.UseMySql(connectionString, version);
+        o.ConfigureWarnings(w =>
+          w.Ignore(RelationalEventId.NonTransactionalMigrationOperationWarning));
         o.ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning));
       });
     }
@@ -57,6 +63,8 @@ public static class AppDbContextExtensions
       services.AddDbContext<AppDbContext, PostgresDbContext>(o =>
       {
         o.UseNpgsql(connectionString);
+        o.ConfigureWarnings(w =>
+          w.Ignore(RelationalEventId.NonTransactionalMigrationOperationWarning));
         o.ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning));
       });
     }
